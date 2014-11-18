@@ -1,0 +1,14 @@
+{
+  "name": "votebot",
+  "version": "1.0.0",
+  "description": "Spark Core sumobot. Moves via voting. OKCJS Lightning Talk Demo.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server"
+  },
+  "author": "makenova",
+  "dependencies": {
+    "express": "^4.10.2",
+    "socket.io": "^1.2.0"
+  }
+}

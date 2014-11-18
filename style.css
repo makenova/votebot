@@ -18,6 +18,8 @@ body {
 }
 
 #status {
+	font-size: 1.4em;
+	margin-bottom: 0;
 	background: #eeeeee;
 	height: 10%;
 }

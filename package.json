@@ -1,7 +1,7 @@
 {
   "name": "votebot",
   "version": "1.0.0",
-  "description": "Spark Core sumobot. Moves via voting. OKCJS Lightning Talk Demo.",
+  "description": "Spark Core sumobot-js. Moves via voting. OKCJS Lightning Talk Demo.",
   "main": "index.js",
   "scripts": {
     "start": "node server"

@@ -1,7 +1,7 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var port = 3000;
+var port = process.env.PORT || 3000;
 
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
@@ -22,7 +22,7 @@ function incremetBallot (vote) {
     ballot[vote]++;
     console.log(ballot);
 
-    if (ballot[vote] >= 3) {
+    if (ballot[vote] >= 10) {
       io.emit('consensus', vote);
       moveBot(vote);
       Object.keys(ballot).forEach(function (key) {

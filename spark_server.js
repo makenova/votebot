@@ -1,6 +1,6 @@
 var five = require("johnny-five");
 var Spark = require("spark-io");
-var socket = require('socket.io-client')('http://192.168.0.6:3000');
+var socket = require('socket.io-client')('https://okcjs-votebot.herokuapp.com/');
 
 var board = new five.Board({
   io: new Spark({
@@ -10,10 +10,30 @@ var board = new five.Board({
 });
 
 board.on("ready", function () {
-  var led = new five.Led("D7");
+  var left_wheel  = new five.Servo({ pin: "D0", type: 'continuous' }).stop();
+  var right_wheel = new five.Servo({ pin: "D1", type: 'continuous' }).stop();
 
-  board.on('blink', function () {
-    led.blink();
+  board.on('move', function (dir) {
+    console.log(dir);
+
+    if (dir == 'forward'){
+      console.log('Forward');
+      left_wheel.cw(0.9);
+      right_wheel.ccw(0.9);
+    } else if (dir == 'reverse') {
+      console.log('Reverse');
+      left_wheel.ccw(0.9);
+      right_wheel.cw(0.9);
+    } else if (dir == 'right') {
+      console.log('Right');
+      left_wheel.cw(0.9);
+      right_wheel.cw(0.9);
+    } else if (dir == 'left') {
+      console.log('Left');
+      left_wheel.ccw(0.9);
+      right_wheel.ccw(0.9);
+    }
+
   });
 });
 
@@ -22,5 +42,5 @@ socket.on('connect', function () {
 });
 
 socket.on('consensus', function (dir) {
-  board.emit('blink', {});
+  board.emit('move', dir);
 });

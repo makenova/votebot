@@ -9,6 +9,10 @@
   "author": "makenova",
   "dependencies": {
     "express": "^4.10.2",
-    "socket.io": "^1.2.0"
+    "johnny-five": "^0.8.26",
+    "keypress": "^0.2.1",
+    "socket.io": "^1.2.0",
+    "socket.io-client": "^1.2.0",
+    "spark-io": "^0.5.1"
   }
 }

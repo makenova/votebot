@@ -4,10 +4,6 @@ var io = require('socket.io')(http);
 var port = 3000;
 
 app.get('/', function (req, res) {
-  res.send('<h1>Hello World</h1>');
-});
-
-app.get('/index', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
